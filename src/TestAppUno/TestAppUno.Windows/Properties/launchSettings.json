@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "TestAppUno.Windows": {
+      "commandName": "MsixPackage"
+    }
+  }
+}

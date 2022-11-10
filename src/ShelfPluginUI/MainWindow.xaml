@@ -1,0 +1,56 @@
+﻿<Window x:Class="ShelfPluginUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ShelfPluginUI"
+        xmlns:shelfPluginVm="clr-namespace:ShelfPluginVm;assembly=ShelfPluginVm"
+        xmlns:parametersCustomControlLibrary="clr-namespace:ParametersCustomControlLibrary;assembly=ParametersCustomControlLibrary"
+        ResizeMode="NoResize"
+        mc:Ignorable="d"
+        Title="Стеллаж" Height="550" Width="800">
+    <Window.DataContext>
+        <shelfPluginVm:MainWindowVm/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.1*" MinWidth="400"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <parametersCustomControlLibrary:ParametersCustomControl x:Name="ParametersCustomControl" Grid.Column="0"  Grid.Row="0" 
+                                              Parameters="{Binding ShelfParameters.ShelfParameterCollection, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
+                                              UpdateParametersCommand="{Binding UpdateParametersCommand}"/>
+
+            <Button  Grid.Row="1" HorizontalAlignment="Right" Content="Построить" Margin="20, 20, 10, 10" Width="100" Command="{Binding BuildCommand}">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding ElementName=ParametersCustomControl, Path=HasErrors}" Value="True">
+                                <Setter Property="IsEnabled" Value="False"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=ParametersCustomControl, Path=HasErrors}" Value="False">
+                                <Setter Property="IsEnabled" Value="True" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+        </Grid>
+        <GridSplitter Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Width="5"
+                      ResizeDirection="Columns"
+                      ResizeBehavior="PreviousAndNext"
+                      HorizontalAlignment="Stretch" Margin="0, 10"/>
+        <Image Grid.Row="0" Grid.RowSpan="2" Grid.Column="2" Source="/Resources/plan.png"></Image>
+    </Grid>
+</Window>
