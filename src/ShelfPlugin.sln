@@ -3,13 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{48BA10B8-6E9F-441B-AB4E-559D935F3883}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{48BA10B8-6E9F-441B-AB4E-559D935F3883}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShelfPluginUI", "ShelfPluginUI\ShelfPluginUI.csproj", "{908DFD66-0A5B-448B-A327-A6BDFB8DCD5B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShelfPluginUI", "ShelfPluginUI\ShelfPluginUI.csproj", "{908DFD66-0A5B-448B-A327-A6BDFB8DCD5B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShelfPluginVm", "ShelfPluginVm\ShelfPluginVm.csproj", "{6FC70E2F-0705-4DA0-8E96-1E6C73A27A14}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShelfPluginVm", "ShelfPluginVm\ShelfPluginVm.csproj", "{6FC70E2F-0705-4DA0-8E96-1E6C73A27A14}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParametersCustomControlLibrary", "ParametersCustomControlLibrary\ParametersCustomControlLibrary.csproj", "{219EBB2C-6C70-4C3E-80D6-0933208295A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParametersCustomControlLibrary", "ParametersCustomControlLibrary\ParametersCustomControlLibrary.csproj", "{219EBB2C-6C70-4C3E-80D6-0933208295A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Buidler", "Buidler\Buidler.csproj", "{5DF875C6-A45D-490D-A24C-85045E07C21D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KompasApi", "KompasApi\KompasApi.csproj", "{2A4F276C-6CBC-4CE3-8C3F-F0266787C35D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{8DA35620-F0C7-4E18-BFDA-5B30BFEC5772}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +39,18 @@ Global
 		{219EBB2C-6C70-4C3E-80D6-0933208295A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{219EBB2C-6C70-4C3E-80D6-0933208295A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{219EBB2C-6C70-4C3E-80D6-0933208295A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DF875C6-A45D-490D-A24C-85045E07C21D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DF875C6-A45D-490D-A24C-85045E07C21D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DF875C6-A45D-490D-A24C-85045E07C21D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DF875C6-A45D-490D-A24C-85045E07C21D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A4F276C-6CBC-4CE3-8C3F-F0266787C35D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A4F276C-6CBC-4CE3-8C3F-F0266787C35D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A4F276C-6CBC-4CE3-8C3F-F0266787C35D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A4F276C-6CBC-4CE3-8C3F-F0266787C35D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DA35620-F0C7-4E18-BFDA-5B30BFEC5772}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DA35620-F0C7-4E18-BFDA-5B30BFEC5772}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DA35620-F0C7-4E18-BFDA-5B30BFEC5772}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DA35620-F0C7-4E18-BFDA-5B30BFEC5772}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

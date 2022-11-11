@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Services\Services.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Kompas6API2D5COM">
+      <HintPath>..\..\..\..\WpfAppSaprTest\Common\Kompas6API2D5COM.dll</HintPath>
+    </Reference>
+    <Reference Include="Kompas6API3D5COM">
+      <HintPath>..\..\..\..\WpfAppSaprTest\Common\Kompas6API3D5COM.dll</HintPath>
+    </Reference>
+    <Reference Include="Kompas6API5">
+      <HintPath>..\..\..\..\WpfAppSaprTest\Common\Kompas6API5.dll</HintPath>
+    </Reference>
+    <Reference Include="Kompas6Constants">
+      <HintPath>..\..\..\..\WpfAppSaprTest\Common\Kompas6Constants.dll</HintPath>
+    </Reference>
+    <Reference Include="Kompas6Constants3D">
+      <HintPath>..\..\..\..\WpfAppSaprTest\Common\Kompas6Constants3D.dll</HintPath>
+    </Reference>
+    <Reference Include="KompasAPI7">
+      <HintPath>..\..\..\..\WpfAppSaprTest\Common\KompasAPI7.dll</HintPath>
+    </Reference>
+    <Reference Include="KompasLibrary">
+      <HintPath>..\..\..\..\WpfAppSaprTest\Common\KompasLibrary.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
