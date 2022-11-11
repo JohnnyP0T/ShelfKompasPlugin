@@ -80,8 +80,7 @@ namespace ShelfPluginVm
         /// </summary>
         public MainWindowVm()
         {
-            ShelfParameters = new ShelfParameters(); 
-
+            ShelfParameters = new ShelfParameters();
             //MessageBox.Show("Исправьте введенные параметры", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             //ShelfBuilder s = new ShelfBuilder();
             //var api = new KompasWrapper();
