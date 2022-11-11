@@ -21,8 +21,7 @@ namespace Buidler
         /// <param name="apiService">Апи</param>
         public void BuildShelf(ShelfParameters fenceParameters, IApi apiService)
         {
-            apiService = apiService;
-
+            //TODO
             var points = new List<PointF>
             {
                 apiService.CreatePoint(0, 0),
@@ -35,14 +34,7 @@ namespace Buidler
 
             sketchXy.CreateTwoPointRectangle(points[0], points[1]);
 
-
-
             apiService.Extrude(sketchXy, 100);
-
-
-
-
-
 
             points = new List<PointF>
             {
