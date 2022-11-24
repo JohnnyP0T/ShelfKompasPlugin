@@ -81,7 +81,7 @@ namespace KompasApi
         /// <inheritdoc/>
         public ISketch CreateNewSketch(int n, double offset)
         {
-            return new KompasSketch(_part);
+            return new KompasSketch(_part, n);
         }
 
         /// <inheritdoc/>
@@ -113,10 +113,10 @@ namespace KompasApi
             kompasSketch.EndEdit();
             ksEntity extrude = (ksEntity)_part.NewEntity((int)Obj3dType.o3d_cutExtrusion);
             ksCutExtrusionDefinition extrudeDefinition = (ksCutExtrusionDefinition)extrude.GetDefinition();
-            extrudeDefinition.directionType = (int)Direction_Type.dtReverse;
+            extrudeDefinition.directionType = (int)Direction_Type.dtNormal;
             extrudeDefinition.SetSketch(kompasSketch.Sketch);
             ksExtrusionParam extrudeParam = (ksExtrusionParam)extrudeDefinition.ExtrusionParam();
-            extrudeParam.depthReverse = distance;
+            extrudeParam.depthNormal = distance;
             extrude.Create();
         }
     }

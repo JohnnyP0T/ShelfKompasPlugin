@@ -35,9 +35,23 @@ namespace KompasApi
         /// Конструктор.
         /// </summary>
         /// <param name="part"></param>
-        public KompasSketch(ksPart part)
+        /// <param name="n">1 - ZY; 2 - ZX; 3 - XY.</param>
+        public KompasSketch(ksPart part, int n)
         {
-            ksEntity plane = (ksEntity)part.GetDefaultEntity((int)Obj3dType.o3d_planeXOZ);
+            ksEntity plane;
+            if (n == 1)
+            {
+                plane = (ksEntity)part.GetDefaultEntity((int)Obj3dType.o3d_planeYOZ);
+            }
+            else if(n == 2)
+            {
+                plane = (ksEntity)part.GetDefaultEntity((int)Obj3dType.o3d_planeXOZ);
+
+            }
+            else
+            {
+                plane = (ksEntity)part.GetDefaultEntity((int)Obj3dType.o3d_planeXOY);
+            }
             Sketch = (ksEntity)part.NewEntity((int)Obj3dType.o3d_sketch);
             _sketchDefinition = (ksSketchDefinition)Sketch.GetDefinition();
             _sketchDefinition.SetPlane(plane);

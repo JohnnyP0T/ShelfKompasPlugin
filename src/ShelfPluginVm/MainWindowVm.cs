@@ -69,7 +69,9 @@ namespace ShelfPluginVm
         {
             if (!ShelfParameters.ShelfParameterCollection.All(x => x.Value.HasError))
             {
-
+                ShelfBuilder s = new ShelfBuilder();
+                var api = new KompasWrapper();
+                s.BuildShelf(ShelfParameters, api);
             }
         });
 
@@ -84,9 +86,7 @@ namespace ShelfPluginVm
         {
             ShelfParameters = new ShelfParameters();
             //MessageBox.Show("Исправьте введенные параметры", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-            //ShelfBuilder s = new ShelfBuilder();
-            //var api = new KompasWrapper();
-            //s.BuildShelf(ShelfParameters, api);
+            
         }
 
         #endregion

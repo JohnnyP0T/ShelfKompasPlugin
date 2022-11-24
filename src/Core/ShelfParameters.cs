@@ -163,18 +163,35 @@ namespace Core
             ShelfParameterCollection[ParameterType.HeightShelf].MaxValue = ShelfParameterCollection[ParameterType.Height].Value;
             ShelfParameterCollection[ParameterType.HeightShelf].Value = ShelfParameterCollection[ParameterType.HeightShelf].Value;
 
-
             ShelfParameterCollection[ParameterType.UpperIndent].MaxValue = ShelfParameterCollection[ParameterType.Height].Value -
-                                                                           (Math.Floor(ShelfParameterCollection[ParameterType.Height].Value /
-                                                                                ShelfParameterCollection[ParameterType.HeightShelf].Value) *
-                                                                            ShelfParameterCollection[ParameterType.HeightShelf].Value) - ShelfParameterCollection[ParameterType.LowerIndent].Value;
+                                                                           (getCountShelf() *
+                                                                            (ShelfParameterCollection[ParameterType.HeightShelf].Value + ShelfParameterCollection[ParameterType.WidthShelf].Value)) - 
+                                                                           (ShelfParameterCollection[ParameterType.LowerIndent].Value - ShelfParameterCollection[ParameterType.UpperIndent].Value);
             ShelfParameterCollection[ParameterType.UpperIndent].Value = ShelfParameterCollection[ParameterType.UpperIndent].Value;
 
             ShelfParameterCollection[ParameterType.LowerIndent].MaxValue = ShelfParameterCollection[ParameterType.Height].Value -
-                                                               (Math.Floor(ShelfParameterCollection[ParameterType.Height].Value /
-                                                                 ShelfParameterCollection[ParameterType.HeightShelf].Value) *
-                                                                ShelfParameterCollection[ParameterType.HeightShelf].Value) - ShelfParameterCollection[ParameterType.UpperIndent].Value;
+                                                               (getCountShelf() *
+                                                                (ShelfParameterCollection[ParameterType.HeightShelf].Value + ShelfParameterCollection[ParameterType.WidthShelf].Value)) 
+                                                               - (ShelfParameterCollection[ParameterType.UpperIndent].Value - ShelfParameterCollection[ParameterType.LowerIndent].Value);
             ShelfParameterCollection[ParameterType.LowerIndent].Value = ShelfParameterCollection[ParameterType.LowerIndent].Value;
+        }
+
+        private double getCountShelf()
+        {
+            var s = Math.Floor((ShelfParameterCollection[ParameterType.Height].Value -
+                                ShelfParameterCollection[ParameterType.LowerIndent].Value -
+                                ShelfParameterCollection[ParameterType.UpperIndent].Value -
+                                ShelfParameterCollection[ParameterType.WidthShelf].Value * 2) /
+                               (ShelfParameterCollection[ParameterType.HeightShelf].Value +
+                                ShelfParameterCollection[ParameterType.WidthShelf].Value))
+                    *
+                    (ShelfParameterCollection[ParameterType.HeightShelf].Value + ShelfParameterCollection[ParameterType.WidthShelf].Value);
+            return Math.Floor((ShelfParameterCollection[ParameterType.Height].Value -
+                               ShelfParameterCollection[ParameterType.LowerIndent].Value -
+                               ShelfParameterCollection[ParameterType.UpperIndent].Value -
+                               ShelfParameterCollection[ParameterType.WidthShelf].Value * 2) /
+                              (ShelfParameterCollection[ParameterType.HeightShelf].Value +
+                               ShelfParameterCollection[ParameterType.WidthShelf].Value));
         }
 
         #endregion

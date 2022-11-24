@@ -28,7 +28,7 @@ namespace Services
         /// <summary>
         /// Создание эскиза.
         /// </summary>
-        /// <param name="n">Плоскость.</param>
+        /// <param name="n"> Плоскость 1 - ZY; 2 - ZX; 3 - XY.</param>
         /// <param name="offset">Расстояние от плоскости.</param>
         /// <returns></returns>
         ISketch CreateNewSketch(int n, double offset);
