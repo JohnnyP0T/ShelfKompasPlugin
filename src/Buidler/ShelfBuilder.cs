@@ -120,7 +120,7 @@ namespace Buidler
             var counter = Math.Floor((shelfParameters.ShelfParameterCollection[ParameterType.Height].Value -
                                       shelfParameters.ShelfParameterCollection[ParameterType.LowerIndent].Value -
                                       shelfParameters.ShelfParameterCollection[ParameterType.UpperIndent].Value -
-                                      shelfParameters.ShelfParameterCollection[ParameterType.WidthShelf].Value * 2) /
+                                      shelfParameters.ShelfParameterCollection[ParameterType.WidthShelf].Value) /
                                      (shelfParameters.ShelfParameterCollection[ParameterType.HeightShelf].Value +
                                       shelfParameters.ShelfParameterCollection[ParameterType.WidthShelf].Value));
             for (int i = 0; i < counter; i++)

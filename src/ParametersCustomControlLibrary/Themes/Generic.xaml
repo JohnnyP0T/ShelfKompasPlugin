@@ -29,24 +29,25 @@
                                         <TextBlock Grid.Row="0" Grid.Column="0" 
                                                    Text="{Binding Name}" />
                                         <Border Grid.Row="0" Grid.Column="1" x:Name="Border" >
-                                            <TextBox x:Name="TextBox" Text="{Binding Path=Value, Mode=TwoWay, ValidatesOnExceptions=True,
+                                                <TextBox x:Name="TextBox" Text="{Binding Path=Value, Mode=TwoWay, ValidatesOnExceptions=True,
                                                 ValidatesOnDataErrors=True,
                                                 ValidatesOnNotifyDataErrors=True,
                                                 UpdateSourceTrigger=PropertyChanged}" 
-                                                         HorizontalAlignment="Right" MinWidth="100" >
-                                                <b:Interaction.Triggers>
-                                                    <b:EventTrigger EventName="TextChanged">
-                                                        <b:InvokeCommandAction 
+                                                     HorizontalAlignment="Right" MinWidth="100" >
+                                                    <b:Interaction.Triggers>
+                                                        <b:EventTrigger EventName="TextChanged">
+                                                            <b:InvokeCommandAction 
                                                             Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, 
                             AncestorType={x:Type local:ParametersCustomControl}},UpdateSourceTrigger=PropertyChanged, 
                             Path=UpdateParametersCommand, Mode=TwoWay}" />
-                                                        <b:InvokeCommandAction 
+                                                            <b:InvokeCommandAction 
                                                             Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, 
                             AncestorType={x:Type local:ParametersCustomControl}},UpdateSourceTrigger=PropertyChanged, 
                             Path=CheckErrors}" />
-                                                    </b:EventTrigger>
-                                                </b:Interaction.Triggers>
-                                            </TextBox>
+                                                        </b:EventTrigger>
+                                                    </b:Interaction.Triggers>
+                                                </TextBox>
+
                                             <Border.Style>
                                                 <Style TargetType="Border">
                                                     <Style.Triggers>

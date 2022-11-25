@@ -65,13 +65,13 @@ namespace ShelfPluginVm
         /// <summary>
         /// Построение стеллажа.
         /// </summary>
-        public RelayCommand BuildCommand => new RelayCommand(() =>
+        public RelayCommand BuildCommand => new RelayCommand(async () =>
         {
             if (!ShelfParameters.ShelfParameterCollection.All(x => x.Value.HasError))
             {
                 ShelfBuilder s = new ShelfBuilder();
                 var api = new KompasWrapper();
-                s.BuildShelf(ShelfParameters, api);
+                await Task.Run(() => s.BuildShelf(ShelfParameters, api));
             }
         });
 
