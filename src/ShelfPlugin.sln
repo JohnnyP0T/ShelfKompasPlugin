@@ -11,11 +11,23 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShelfPluginVm", "ShelfPlugi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParametersCustomControlLibrary", "ParametersCustomControlLibrary\ParametersCustomControlLibrary.csproj", "{219EBB2C-6C70-4C3E-80D6-0933208295A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Buidler", "Buidler\Buidler.csproj", "{5DF875C6-A45D-490D-A24C-85045E07C21D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Buidler", "Buidler\Buidler.csproj", "{5DF875C6-A45D-490D-A24C-85045E07C21D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KompasApi", "KompasApi\KompasApi.csproj", "{2A4F276C-6CBC-4CE3-8C3F-F0266787C35D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KompasApi", "KompasApi\KompasApi.csproj", "{2A4F276C-6CBC-4CE3-8C3F-F0266787C35D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{8DA35620-F0C7-4E18-BFDA-5B30BFEC5772}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "Services\Services.csproj", "{8DA35620-F0C7-4E18-BFDA-5B30BFEC5772}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{95CE87EA-1DFE-4D76-AC81-78A4AD07423F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StessTesting", "Tests\StessTesting\StessTesting.csproj", "{EE8BABFE-ED9B-4049-9D23-4E091A4C5469}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommonTestClass", "Tests\CommonTestClass\CommonTestClass.csproj", "{179F406D-1736-402D-9D9E-08F9E586A23A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestBuilder", "Tests\TestBuilder\TestBuilder.csproj", "{AC447D47-DDCB-447F-9D26-8403A47C1FF6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestCore", "Tests\TestCore\TestCore.csproj", "{3C34661B-550B-4CD3-BF0A-64DCF9034454}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestShelfBuildingVm", "Tests\TestShelfBuildingVm\TestShelfBuildingVm.csproj", "{97DCF53F-5A46-47F4-B1DA-01A7334167D6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,9 +63,36 @@ Global
 		{8DA35620-F0C7-4E18-BFDA-5B30BFEC5772}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8DA35620-F0C7-4E18-BFDA-5B30BFEC5772}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8DA35620-F0C7-4E18-BFDA-5B30BFEC5772}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE8BABFE-ED9B-4049-9D23-4E091A4C5469}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE8BABFE-ED9B-4049-9D23-4E091A4C5469}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE8BABFE-ED9B-4049-9D23-4E091A4C5469}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE8BABFE-ED9B-4049-9D23-4E091A4C5469}.Release|Any CPU.Build.0 = Release|Any CPU
+		{179F406D-1736-402D-9D9E-08F9E586A23A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{179F406D-1736-402D-9D9E-08F9E586A23A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{179F406D-1736-402D-9D9E-08F9E586A23A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{179F406D-1736-402D-9D9E-08F9E586A23A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC447D47-DDCB-447F-9D26-8403A47C1FF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC447D47-DDCB-447F-9D26-8403A47C1FF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC447D47-DDCB-447F-9D26-8403A47C1FF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC447D47-DDCB-447F-9D26-8403A47C1FF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C34661B-550B-4CD3-BF0A-64DCF9034454}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C34661B-550B-4CD3-BF0A-64DCF9034454}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C34661B-550B-4CD3-BF0A-64DCF9034454}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C34661B-550B-4CD3-BF0A-64DCF9034454}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97DCF53F-5A46-47F4-B1DA-01A7334167D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97DCF53F-5A46-47F4-B1DA-01A7334167D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97DCF53F-5A46-47F4-B1DA-01A7334167D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97DCF53F-5A46-47F4-B1DA-01A7334167D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EE8BABFE-ED9B-4049-9D23-4E091A4C5469} = {95CE87EA-1DFE-4D76-AC81-78A4AD07423F}
+		{179F406D-1736-402D-9D9E-08F9E586A23A} = {95CE87EA-1DFE-4D76-AC81-78A4AD07423F}
+		{AC447D47-DDCB-447F-9D26-8403A47C1FF6} = {95CE87EA-1DFE-4D76-AC81-78A4AD07423F}
+		{3C34661B-550B-4CD3-BF0A-64DCF9034454} = {95CE87EA-1DFE-4D76-AC81-78A4AD07423F}
+		{97DCF53F-5A46-47F4-B1DA-01A7334167D6} = {95CE87EA-1DFE-4D76-AC81-78A4AD07423F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A5F84FD0-0B2C-4CCD-85DE-EDDE581ECDAD}

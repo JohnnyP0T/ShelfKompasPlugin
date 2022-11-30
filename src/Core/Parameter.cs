@@ -38,7 +38,7 @@ namespace Core
             get => _value;
             set
             {
-                if (value > _maxValue || value < MinValue || Value < 0)
+                if (value > _maxValue || value < MinValue || value < 0)
                 {
                     HasError = true;
                 }

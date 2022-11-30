@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,10 +20,27 @@ namespace ShelfPluginVm
         private ShelfParameters _shelfParameters;
 
         private bool _hasErrors;
+        
+        private BackgroundWorker _worker;
+
+        private bool _isCompleted;
 
         #endregion
 
         #region -- Properties --
+
+        /// <summary>
+        /// Идет ли процесс загрузки.
+        /// </summary>
+        public bool IsCompleted
+        {
+            get => _isCompleted;
+            set
+            {
+                SetProperty(ref _isCompleted, value);
+                OnPropertyChanged(nameof(IsCompleted));
+            }
+        }
 
         /// <summary>
         /// Параметры стеллажа.
@@ -65,13 +83,11 @@ namespace ShelfPluginVm
         /// <summary>
         /// Построение стеллажа.
         /// </summary>
-        public RelayCommand BuildCommand => new RelayCommand(async () =>
+        public RelayCommand BuildCommand => new RelayCommand( () =>
         {
             if (!ShelfParameters.ShelfParameterCollection.All(x => x.Value.HasError))
             {
-                ShelfBuilder s = new ShelfBuilder();
-                var api = new KompasWrapper();
-                await Task.Run(() => s.BuildShelf(ShelfParameters, api));
+                _worker.RunWorkerAsync();
             }
         });
 
@@ -85,10 +101,28 @@ namespace ShelfPluginVm
         public MainWindowVm()
         {
             ShelfParameters = new ShelfParameters();
-            //MessageBox.Show("Исправьте введенные параметры", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-            
+            IsCompleted = true;
+
+            _worker = new BackgroundWorker();
+            _worker.WorkerReportsProgress = true;
+            _worker.WorkerSupportsCancellation = false;
+            _worker.DoWork += new DoWorkEventHandler(worker_DoWork);
+            _worker.RunWorkerCompleted += BackgroundWorker_RunWorkerCompleted; 
         }
 
         #endregion
+
+        private void worker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            IsCompleted = false;
+            ShelfBuilder s = new ShelfBuilder();
+            var api = new KompasWrapper();
+            s.BuildShelf(ShelfParameters, api);
+        }
+
+        private void BackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            IsCompleted = true; 
+        }
     }
 }
