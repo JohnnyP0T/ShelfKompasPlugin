@@ -78,7 +78,7 @@ public class TestShelfParameters
     {
         var shelfParameters = ShelfParameters;
 
-        Assert.DoesNotThrow(() => 
+        Assert.DoesNotThrow(() =>
                 shelfParameters.ShelfParameterCollection[parameterType].Value = value,
             "Не удалось присвоить корректное значение.");
     }
@@ -154,4 +154,69 @@ public class TestShelfParameters
         Assert.That(shelfParameters.ShelfParameterCollection[parameterType].HasError, Is.EqualTo(true),
             "Присвоило значение не входящие в диапазон.");
     }
+
+    [TestCase(ParameterType.HeightShelf,
+        TestName = "Проверка зависимых параметров")]
+    public void TestUpdateValues_CorrectSetValue(ParameterType parameterType)
+    {
+        var shelfParametersActual = new ShelfParameters();
+        var shelfParametersExpected = new ShelfParameters();
+
+        shelfParametersActual.ShelfParameterCollection[ParameterType.HeightShelf].MinValue =
+            shelfParametersActual.ShelfParameterCollection[ParameterType.WidthShelf].Value;
+        shelfParametersActual.ShelfParameterCollection[ParameterType.HeightShelf].MaxValue =
+            shelfParametersActual.ShelfParameterCollection[ParameterType.Height].Value
+            - shelfParametersActual.ShelfParameterCollection[ParameterType.WidthShelf].Value * 2;
+        shelfParametersActual.ShelfParameterCollection[ParameterType.HeightShelf].Value =
+            shelfParametersActual.ShelfParameterCollection[ParameterType.HeightShelf].Value;
+
+        shelfParametersActual.ShelfParameterCollection[ParameterType.UpperIndent].MaxValue =
+            shelfParametersActual.ShelfParameterCollection[ParameterType.Height].Value -
+            (Math.Floor((shelfParametersActual.ShelfParameterCollection[ParameterType.Height].Value -
+                         shelfParametersActual.ShelfParameterCollection[ParameterType.WidthShelf].Value * 2) /
+                        (shelfParametersActual.ShelfParameterCollection[ParameterType.HeightShelf].Value +
+                         shelfParametersActual.ShelfParameterCollection[ParameterType.WidthShelf].Value)) *
+             (shelfParametersActual.ShelfParameterCollection[ParameterType.HeightShelf].Value +
+              shelfParametersActual.ShelfParameterCollection[ParameterType.WidthShelf].Value) +
+             (shelfParametersActual.ShelfParameterCollection[ParameterType.LowerIndent].Value +
+              shelfParametersActual.ShelfParameterCollection[ParameterType.WidthShelf].Value));
+        shelfParametersActual.ShelfParameterCollection[ParameterType.UpperIndent].Value =
+            shelfParametersActual.ShelfParameterCollection[ParameterType.UpperIndent].Value;
+
+        shelfParametersActual.ShelfParameterCollection[ParameterType.LowerIndent].MaxValue =
+            shelfParametersActual.ShelfParameterCollection[ParameterType.Height].Value -
+            (Math.Floor((shelfParametersActual.ShelfParameterCollection[ParameterType.Height].Value -
+                         shelfParametersActual.ShelfParameterCollection[ParameterType.WidthShelf].Value * 2) /
+                        (shelfParametersActual.ShelfParameterCollection[ParameterType.HeightShelf].Value +
+                         shelfParametersActual.ShelfParameterCollection[ParameterType.WidthShelf].Value)) *
+             (shelfParametersActual.ShelfParameterCollection[ParameterType.HeightShelf].Value +
+              shelfParametersActual.ShelfParameterCollection[ParameterType.WidthShelf].Value)
+             + (shelfParametersActual.ShelfParameterCollection[ParameterType.UpperIndent].Value +
+                shelfParametersActual.ShelfParameterCollection[ParameterType.WidthShelf].Value));
+        shelfParametersActual.ShelfParameterCollection[ParameterType.LowerIndent].Value =
+            shelfParametersActual.ShelfParameterCollection[ParameterType.LowerIndent].Value;
+
+        shelfParametersExpected.UpdateValues();
+
+        Assert.That(shelfParametersActual.ShelfParameterCollection[ParameterType.HeightShelf].MinValue,
+            Is.EqualTo(shelfParametersExpected.ShelfParameterCollection[ParameterType.HeightShelf].MinValue),
+            "Значение HeightShelf");
+        Assert.That(shelfParametersActual.ShelfParameterCollection[ParameterType.HeightShelf].MaxValue,
+            Is.EqualTo(shelfParametersExpected.ShelfParameterCollection[ParameterType.HeightShelf].MaxValue),
+            "Значение HeightShelf");
+        Assert.That(shelfParametersActual.ShelfParameterCollection[ParameterType.UpperIndent].MaxValue,
+            Is.EqualTo(shelfParametersExpected.ShelfParameterCollection[ParameterType.UpperIndent].MaxValue),
+            "Значение UpperIndent");
+        Assert.That(shelfParametersActual.ShelfParameterCollection[ParameterType.UpperIndent].Value,
+            Is.EqualTo(shelfParametersExpected.ShelfParameterCollection[ParameterType.UpperIndent].Value),
+            "Значение UpperIndent");
+        Assert.That(shelfParametersActual.ShelfParameterCollection[ParameterType.LowerIndent].MaxValue,
+            Is.EqualTo(shelfParametersExpected.ShelfParameterCollection[ParameterType.LowerIndent].MaxValue),
+            "Значение LowerIndent");
+        Assert.That(shelfParametersActual.ShelfParameterCollection[ParameterType.LowerIndent].Value,
+            Is.EqualTo(shelfParametersExpected.ShelfParameterCollection[ParameterType.LowerIndent].Value),
+            "Значение LowerIndent");
+    }
+
+
 }

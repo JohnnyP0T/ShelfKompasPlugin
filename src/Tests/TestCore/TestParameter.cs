@@ -28,4 +28,32 @@ public class TestParameter
             "Негативное значение превратилось в ноль.");
 
     }
+
+    [TestCase(TestName = "Проверка получения Name")]
+    public void TestGetValueName_CorrectValue()
+    {
+        var parameter = new Parameter();
+        var expected = "Name";
+
+        parameter.Name = "Name";
+        
+        Assert.That(
+            parameter.Name,
+            Is.EqualTo(expected),
+            "Корректное имя параметра");
+    }
+
+    [TestCase(TestName = "Проверка получения ErrorMessage")]
+    public void TestGetValueErrorMessage_CorrectValue()
+    {
+        var parameter = new Parameter();
+        var expected = "ErrorMessage";
+
+        parameter.ErrorMessage = "ErrorMessage";
+
+        Assert.That(
+            parameter.ErrorMessage,
+            Is.EqualTo(expected),
+            "Корректное имя ошибки параметра");
+    }
 }
