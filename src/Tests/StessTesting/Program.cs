@@ -23,7 +23,8 @@ var process = Process.GetCurrentProcess();
 // memory usage of the process.
 long peakPagedMem = 0,
     peakWorkingSet = 0,
-    peakVirtualMem = 0;
+    peakVirtualMem = 0,
+    countDetal = 0;
 // Start the process.
 using (Process myProcess = Process.GetCurrentProcess())
 {
@@ -34,6 +35,7 @@ using (Process myProcess = Process.GetCurrentProcess())
         if (!myProcess.HasExited)
         {
             builder.BuildShelf(shelfParameters, apiService);
+            countDetal++;
             // Refresh the current process property values.
             myProcess.Refresh();
 
@@ -44,6 +46,7 @@ using (Process myProcess = Process.GetCurrentProcess())
             Console.WriteLine($"{myProcess} -");
             Console.WriteLine("-------------------------------------");
 
+            Console.WriteLine($"  Количество деталей        : {countDetal}");
             Console.WriteLine($"  Physical memory usage     : {myProcess.WorkingSet64}");
             Console.WriteLine($"  Base priority             : {myProcess.BasePriority}");
             Console.WriteLine($"  Priority class            : {myProcess.PriorityClass}");
