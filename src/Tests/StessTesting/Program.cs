@@ -14,7 +14,7 @@ var builder = new ShelfBuilder();
 var stopWatch = new Stopwatch();
 var apiService = new KompasWrapper();
 stopWatch.Start();
-var fenceParameters = new ShelfParameters();
+var shelfParameters = new ShelfParameters();
 var streamWriter = new StreamWriter($"log{apiService}.txt", true);
 var process = Process.GetCurrentProcess();
 
@@ -33,7 +33,7 @@ using (Process myProcess = Process.GetCurrentProcess())
     {
         if (!myProcess.HasExited)
         {
-            builder.BuildShelf(fenceParameters, apiService);
+            builder.BuildShelf(shelfParameters, apiService);
             // Refresh the current process property values.
             myProcess.Refresh();
 

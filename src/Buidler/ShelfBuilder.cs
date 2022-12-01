@@ -14,8 +14,14 @@ namespace Buidler
     /// </summary>
     public class ShelfBuilder
     {
+        /// <summary>
+        /// Параметры стеллажа.
+        /// </summary>
         private ShelfParameters _shelfParameters;
 
+        /// <summary>
+        /// Апи.
+        /// </summary>
         private IApi _apiService;
 
         /// <summary>
@@ -44,16 +50,18 @@ namespace Buidler
             var points = new List<PointF>
             {
                 _apiService.CreatePoint(0, 0),
-                _apiService.CreatePoint(_shelfParameters.ShelfParameterCollection[ParameterType.Width].Value, 
+                _apiService.CreatePoint(
+                    _shelfParameters.ShelfParameterCollection[ParameterType.Width].Value, 
                     _shelfParameters.ShelfParameterCollection[ParameterType.Length].Value),
             };
 
             _apiService.CreateDocument();
-            var sketchXy = _apiService.CreateNewSketch(3, 0);
+            var sketchXy = _apiService.CreateNewSketch(3);
 
             sketchXy.CreateTwoPointRectangle(points[0], points[1]);
 
-            _apiService.Extrude(sketchXy, _shelfParameters.ShelfParameterCollection[ParameterType.Height].Value);
+            _apiService.Extrude(sketchXy, 
+                _shelfParameters.ShelfParameterCollection[ParameterType.Height].Value);
 
         }
         #endregion
@@ -69,12 +77,16 @@ namespace Buidler
 
             var points = new List<PointF>
             {
-                _apiService.CreatePoint(_shelfParameters.ShelfParameterCollection[ParameterType.WidthRack].Value, 0),
-                _apiService.CreatePoint(_shelfParameters.ShelfParameterCollection[ParameterType.Width].Value - _shelfParameters.ShelfParameterCollection[ParameterType.WidthRack].Value,
+                _apiService.CreatePoint(
+                    _shelfParameters.ShelfParameterCollection[ParameterType.WidthRack].Value, 
+                    0),
+                _apiService.CreatePoint(
+                    _shelfParameters.ShelfParameterCollection[ParameterType.Width].Value - 
+                    _shelfParameters.ShelfParameterCollection[ParameterType.WidthRack].Value,
                     _shelfParameters.ShelfParameterCollection[ParameterType.LowerIndent].Value),
             };
 
-            var sketchXy1 = _apiService.CreateNewSketch(2, 0);
+            var sketchXy1 = _apiService.CreateNewSketch(2);
 
             sketchXy1.CreateTwoPointRectangle(points[0], points[1]);
             _apiService.CutExtrude(sketchXy1, _shelfParameters.ShelfParameterCollection[ParameterType.Length].Value);
@@ -85,15 +97,20 @@ namespace Buidler
 
             points = new List<PointF>
             {
-                _apiService.CreatePoint(0, -_shelfParameters.ShelfParameterCollection[ParameterType.WidthRack].Value),
-                _apiService.CreatePoint(-_shelfParameters.ShelfParameterCollection[ParameterType.LowerIndent].Value,
-                    -(_shelfParameters.ShelfParameterCollection[ParameterType.Length].Value - _shelfParameters.ShelfParameterCollection[ParameterType.WidthRack].Value)),
+                _apiService.CreatePoint(
+                    0, 
+                    -_shelfParameters.ShelfParameterCollection[ParameterType.WidthRack].Value),
+                _apiService.CreatePoint(
+                    -_shelfParameters.ShelfParameterCollection[ParameterType.LowerIndent].Value,
+                    -(_shelfParameters.ShelfParameterCollection[ParameterType.Length].Value - 
+                      _shelfParameters.ShelfParameterCollection[ParameterType.WidthRack].Value)),
             };
 
-            var sketchXy3 = _apiService.CreateNewSketch(1, 0);
+            var sketchXy3 = _apiService.CreateNewSketch(1);
 
             sketchXy3.CreateTwoPointRectangle(points[0], points[1]);
-            _apiService.CutExtrude(sketchXy3, _shelfParameters.ShelfParameterCollection[ParameterType.Width].Value);
+            _apiService.CutExtrude(sketchXy3, 
+                _shelfParameters.ShelfParameterCollection[ParameterType.Width].Value);
 
             #endregion
         }
@@ -111,15 +128,21 @@ namespace Buidler
 
             var points = new List<PointF>
             {
-                _apiService.CreatePoint(_shelfParameters.ShelfParameterCollection[ParameterType.WidthRack].Value, _shelfParameters.ShelfParameterCollection[ParameterType.Height].Value),
-                _apiService.CreatePoint(_shelfParameters.ShelfParameterCollection[ParameterType.Width].Value - _shelfParameters.ShelfParameterCollection[ParameterType.WidthRack].Value,
-                    _shelfParameters.ShelfParameterCollection[ParameterType.Height].Value - _shelfParameters.ShelfParameterCollection[ParameterType.UpperIndent].Value),
+                _apiService.CreatePoint(
+                    _shelfParameters.ShelfParameterCollection[ParameterType.WidthRack].Value, 
+                    _shelfParameters.ShelfParameterCollection[ParameterType.Height].Value),
+                _apiService.CreatePoint(
+                    _shelfParameters.ShelfParameterCollection[ParameterType.Width].Value - 
+                    _shelfParameters.ShelfParameterCollection[ParameterType.WidthRack].Value,
+                    _shelfParameters.ShelfParameterCollection[ParameterType.Height].Value - 
+                    _shelfParameters.ShelfParameterCollection[ParameterType.UpperIndent].Value),
             };
 
-            var sketchXy5 = _apiService.CreateNewSketch(2, 0);
+            var sketchXy5 = _apiService.CreateNewSketch(2);
 
             sketchXy5.CreateTwoPointRectangle(points[0], points[1]);
-            _apiService.CutExtrude(sketchXy5, _shelfParameters.ShelfParameterCollection[ParameterType.Length].Value);
+            _apiService.CutExtrude(sketchXy5, 
+                _shelfParameters.ShelfParameterCollection[ParameterType.Length].Value);
 
             #endregion
 
@@ -127,15 +150,21 @@ namespace Buidler
 
             points = new List<PointF>
             {
-                _apiService.CreatePoint(-_shelfParameters.ShelfParameterCollection[ParameterType.Height].Value, -_shelfParameters.ShelfParameterCollection[ParameterType.WidthRack].Value),
-                _apiService.CreatePoint(-(_shelfParameters.ShelfParameterCollection[ParameterType.Height].Value - _shelfParameters.ShelfParameterCollection[ParameterType.UpperIndent].Value),
-                    -(_shelfParameters.ShelfParameterCollection[ParameterType.Length].Value - _shelfParameters.ShelfParameterCollection[ParameterType.WidthRack].Value)),
+                _apiService.CreatePoint(
+                    -_shelfParameters.ShelfParameterCollection[ParameterType.Height].Value, 
+                    -_shelfParameters.ShelfParameterCollection[ParameterType.WidthRack].Value),
+                _apiService.CreatePoint(
+                    -(_shelfParameters.ShelfParameterCollection[ParameterType.Height].Value - 
+                      _shelfParameters.ShelfParameterCollection[ParameterType.UpperIndent].Value),
+                    -(_shelfParameters.ShelfParameterCollection[ParameterType.Length].Value - 
+                      _shelfParameters.ShelfParameterCollection[ParameterType.WidthRack].Value)),
             };
 
-            var sketchXy6 = _apiService.CreateNewSketch(1, 0);
+            var sketchXy6 = _apiService.CreateNewSketch(1);
 
             sketchXy6.CreateTwoPointRectangle(points[0], points[1]);
-            _apiService.CutExtrude(sketchXy6, _shelfParameters.ShelfParameterCollection[ParameterType.Width].Value);
+            _apiService.CutExtrude(sketchXy6, 
+                _shelfParameters.ShelfParameterCollection[ParameterType.Width].Value);
 
             #endregion
         }
@@ -161,13 +190,22 @@ namespace Buidler
 
                 var points = new List<PointF>
                 {
-                    _apiService.CreatePoint(_shelfParameters.ShelfParameterCollection[ParameterType.WidthRack].Value,
-                        _shelfParameters.ShelfParameterCollection[ParameterType.LowerIndent].Value + _shelfParameters.ShelfParameterCollection[ParameterType.WidthShelf].Value + _shelfParameters.ShelfParameterCollection[ParameterType.WidthShelf].Value * i + _shelfParameters.ShelfParameterCollection[ParameterType.HeightShelf].Value * i),
-                    _apiService.CreatePoint(_shelfParameters.ShelfParameterCollection[ParameterType.Width].Value - _shelfParameters.ShelfParameterCollection[ParameterType.WidthRack].Value,
-                        (_shelfParameters.ShelfParameterCollection[ParameterType.LowerIndent].Value + _shelfParameters.ShelfParameterCollection[ParameterType.WidthShelf].Value) + _shelfParameters.ShelfParameterCollection[ParameterType.WidthShelf].Value * i +
-                        _shelfParameters.ShelfParameterCollection[ParameterType.HeightShelf].Value + _shelfParameters.ShelfParameterCollection[ParameterType.HeightShelf].Value * i),
+                    _apiService.CreatePoint(
+                        _shelfParameters.ShelfParameterCollection[ParameterType.WidthRack].Value,
+                        _shelfParameters.ShelfParameterCollection[ParameterType.LowerIndent].Value + 
+                        _shelfParameters.ShelfParameterCollection[ParameterType.WidthShelf].Value + 
+                        _shelfParameters.ShelfParameterCollection[ParameterType.WidthShelf].Value * i + 
+                        _shelfParameters.ShelfParameterCollection[ParameterType.HeightShelf].Value * i),
+                    _apiService.CreatePoint(
+                        _shelfParameters.ShelfParameterCollection[ParameterType.Width].Value - 
+                        _shelfParameters.ShelfParameterCollection[ParameterType.WidthRack].Value,
+                        (_shelfParameters.ShelfParameterCollection[ParameterType.LowerIndent].Value + 
+                         _shelfParameters.ShelfParameterCollection[ParameterType.WidthShelf].Value) + 
+                        _shelfParameters.ShelfParameterCollection[ParameterType.WidthShelf].Value * i +
+                        _shelfParameters.ShelfParameterCollection[ParameterType.HeightShelf].Value + 
+                        _shelfParameters.ShelfParameterCollection[ParameterType.HeightShelf].Value * i),
                 };
-                var sketchXy2 = _apiService.CreateNewSketch(2, 0);
+                var sketchXy2 = _apiService.CreateNewSketch(2);
 
                 sketchXy2.CreateTwoPointRectangle(points[0], points[1]);
                 _apiService.CutExtrude(sketchXy2, _shelfParameters.ShelfParameterCollection[ParameterType.Length].Value);
@@ -178,13 +216,22 @@ namespace Buidler
 
                 points = new List<PointF>
                 {
-                    _apiService.CreatePoint(-(_shelfParameters.ShelfParameterCollection[ParameterType.LowerIndent].Value + _shelfParameters.ShelfParameterCollection[ParameterType.WidthShelf].Value + _shelfParameters.ShelfParameterCollection[ParameterType.WidthShelf].Value * i + _shelfParameters.ShelfParameterCollection[ParameterType.HeightShelf].Value * i),
+                    _apiService.CreatePoint(
+                        -(_shelfParameters.ShelfParameterCollection[ParameterType.LowerIndent].Value + 
+                          _shelfParameters.ShelfParameterCollection[ParameterType.WidthShelf].Value + 
+                          _shelfParameters.ShelfParameterCollection[ParameterType.WidthShelf].Value * i + 
+                          _shelfParameters.ShelfParameterCollection[ParameterType.HeightShelf].Value * i),
                         -_shelfParameters.ShelfParameterCollection[ParameterType.WidthRack].Value),
-                    _apiService.CreatePoint(-((_shelfParameters.ShelfParameterCollection[ParameterType.LowerIndent].Value + _shelfParameters.ShelfParameterCollection[ParameterType.WidthShelf].Value) + _shelfParameters.ShelfParameterCollection[ParameterType.WidthShelf].Value * i +
-                                             _shelfParameters.ShelfParameterCollection[ParameterType.HeightShelf].Value + _shelfParameters.ShelfParameterCollection[ParameterType.HeightShelf].Value * i),
-                        -(_shelfParameters.ShelfParameterCollection[ParameterType.Length].Value - _shelfParameters.ShelfParameterCollection[ParameterType.WidthRack].Value)),
+                    _apiService.CreatePoint(
+                        -((_shelfParameters.ShelfParameterCollection[ParameterType.LowerIndent].Value + 
+                           _shelfParameters.ShelfParameterCollection[ParameterType.WidthShelf].Value) + 
+                          _shelfParameters.ShelfParameterCollection[ParameterType.WidthShelf].Value * i +
+                                             _shelfParameters.ShelfParameterCollection[ParameterType.HeightShelf].Value + 
+                          _shelfParameters.ShelfParameterCollection[ParameterType.HeightShelf].Value * i),
+                        -(_shelfParameters.ShelfParameterCollection[ParameterType.Length].Value - 
+                          _shelfParameters.ShelfParameterCollection[ParameterType.WidthRack].Value)),
                 };
-                var sketchXy4 = _apiService.CreateNewSketch(1, 0);
+                var sketchXy4 = _apiService.CreateNewSketch(1);
 
                 sketchXy4.CreateTwoPointRectangle(points[0], points[1]);
                 _apiService.CutExtrude(sketchXy4, _shelfParameters.ShelfParameterCollection[ParameterType.Width].Value);

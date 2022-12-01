@@ -71,20 +71,34 @@ namespace KompasApi
             }
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Создание точки.
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
         public PointF CreatePoint(double x, double y)
         {
             //return new Point(x, y); TODO
             return new PointF((float)x, (float)y);
         }
 
-        /// <inheritdoc/>
-        public ISketch CreateNewSketch(int n, double offset)
+        /// <summary>
+        /// Создание эскиза.
+        /// </summary>
+        /// <param name="n">Плоскость.</param>
+        /// <returns></returns>
+        public ISketch CreateNewSketch(int n)
         {
             return new KompasSketch(_part, n);
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Выдавливание.
+        /// </summary>
+        /// <param name="sketch">Эскиз.</param>
+        /// <param name="distance">Дистанция выдавливания.</param>
+        /// <exception cref="TypeAccessException"></exception>
         public void Extrude(ISketch sketch, double distance)
         {
             if (!(sketch is KompasSketch kompasSketch))
@@ -102,6 +116,13 @@ namespace KompasApi
             extrudeParam.depthNormal = distance;
             extrude.Create();
         }
+
+        /// <summary>
+        /// Выдавливание с вырезом.
+        /// </summary>
+        /// <param name="sketch">Эскиз.</param>
+        /// <param name="distance">Дистанция выдавливания.</param>
+        /// <exception cref="TypeAccessException"></exception>
         public void CutExtrude(ISketch sketch, double distance)
         {
             if (!(sketch is KompasSketch kompasSketch))

@@ -59,12 +59,19 @@ namespace KompasApi
             _document2D = (ksDocument2D)_sketchDefinition.BeginEdit();
         }
 
+        /// <summary>
+        /// Завершить редактирование.
+        /// </summary>
         public void EndEdit()
         {
             _sketchDefinition.EndEdit();
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Создать прямоугольник по двум точкам.
+        /// </summary>
+        /// <param name="point1"></param>
+        /// <param name="point2"></param>
         public void CreateTwoPointRectangle(PointF point1, PointF point2)
         {
             _document2D.ksLineSeg(point1.X, -point1.Y, point2.X, -point1.Y, 1);

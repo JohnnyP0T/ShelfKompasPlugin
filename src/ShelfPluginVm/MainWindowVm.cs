@@ -112,6 +112,8 @@ namespace ShelfPluginVm
 
         #endregion
 
+        #region -- PrivateMethods --
+
         private void worker_DoWork(object sender, DoWorkEventArgs e)
         {
             IsCompleted = false;
@@ -122,7 +124,9 @@ namespace ShelfPluginVm
 
         private void BackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            IsCompleted = true; 
+            IsCompleted = true;
         }
+
+        #endregion
     }
 }

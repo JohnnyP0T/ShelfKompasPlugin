@@ -176,13 +176,13 @@ namespace Core
             ShelfParameterCollection[ParameterType.LowerIndent].Value = ShelfParameterCollection[ParameterType.LowerIndent].Value;
         }
 
+        /// <summary>
+        /// Получить количество полок.
+        /// </summary>
+        /// <returns>Количество полок.</returns>
         private double getCountShelf()
         {
      
-            var s = Math.Floor((ShelfParameterCollection[ParameterType.Height].Value -
-                                ShelfParameterCollection[ParameterType.WidthShelf].Value * 2) /
-                               (ShelfParameterCollection[ParameterType.HeightShelf].Value +
-                                ShelfParameterCollection[ParameterType.WidthShelf].Value));
             return Math.Floor((ShelfParameterCollection[ParameterType.Height].Value -
                                ShelfParameterCollection[ParameterType.WidthShelf].Value * 2) /
                               (ShelfParameterCollection[ParameterType.HeightShelf].Value +

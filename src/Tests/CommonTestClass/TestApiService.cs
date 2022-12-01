@@ -52,7 +52,7 @@ public class TestApiService : IApi
     }
 
     /// <inheritdoc/>
-    public ISketch CreateNewSketch(int n, double offset)
+    public ISketch CreateNewSketch(int n)
     {
         IsCreateNewSketch = true;
         return new TestSketch();

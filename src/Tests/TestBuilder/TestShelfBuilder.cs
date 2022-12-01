@@ -25,8 +25,8 @@ public class TestShelfBuilder
     /// </summary>
     private ShelfBuilder ShelfBuilder => new ShelfBuilder();
 
-    [TestCase(TestName = "Тестирование построения корректного забора.")]
-    public void TestBuildFence_DoesNotThrowException()
+    [TestCase(TestName = "Тестирование построения корректного стеллажа.")]
+    public void TestBuildShelf_DoesNotThrowException()
     {
         var shelfBuilder = ShelfBuilder;
         var testApiService = TestApiService;
