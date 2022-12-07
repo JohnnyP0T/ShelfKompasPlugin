@@ -13,6 +13,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Buidler\Buidler.csproj" />
     <ProjectReference Include="..\Core\Core.csproj" />
+    <ProjectReference Include="..\InventorApi\InventorApi.csproj" />
     <ProjectReference Include="..\KompasApi\KompasApi.csproj" />
   </ItemGroup>
 

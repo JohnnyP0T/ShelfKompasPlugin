@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -9,13 +10,19 @@ using Buidler;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Core;
+using InventorApi;
 using KompasApi;
+using Services;
 
 namespace ShelfPluginVm
 {
     public class MainWindowVm : ObservableObject
     {
         #region -- Fields --
+
+        private IApi _selectedApi;
+
+        private ObservableCollection<IApi> _apiServices;
 
         private ShelfParameters _shelfParameters;
 
@@ -52,6 +59,32 @@ namespace ShelfPluginVm
             {
                 SetProperty(ref _shelfParameters, value);
                 OnPropertyChanged(nameof(ShelfParameters));
+            }
+        }
+
+        /// <summary>
+        /// Параметры стеллажа.
+        /// </summary>
+        public ObservableCollection<IApi> ApiServices
+        {
+            get => _apiServices;
+            set
+            {
+                SetProperty(ref _apiServices, value);
+                OnPropertyChanged(nameof(ApiServices));
+            }
+        }
+
+        /// <summary>
+        /// Параметры стеллажа.
+        /// </summary>
+        public IApi SelectedApi
+        {
+            get => _selectedApi;
+            set
+            {
+                SetProperty(ref _selectedApi, value);
+                OnPropertyChanged(nameof(SelectedApi));
             }
         }
 
@@ -102,6 +135,11 @@ namespace ShelfPluginVm
         {
             ShelfParameters = new ShelfParameters();
             IsCompleted = true;
+            ApiServices = new ObservableCollection<IApi>()
+            {
+                new KompasWrapper(),
+                new InventorWrapper()
+            };
 
             _worker = new BackgroundWorker();
             _worker.WorkerReportsProgress = true;
@@ -118,7 +156,7 @@ namespace ShelfPluginVm
         {
             IsCompleted = false;
             ShelfBuilder s = new ShelfBuilder();
-            var api = new KompasWrapper();
+            var api = SelectedApi;
             s.BuildShelf(ShelfParameters, api);
         }
 

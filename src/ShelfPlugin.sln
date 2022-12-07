@@ -27,7 +27,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestBuilder", "Tests\TestBu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestCore", "Tests\TestCore\TestCore.csproj", "{3C34661B-550B-4CD3-BF0A-64DCF9034454}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestShelfBuildingVm", "Tests\TestShelfBuildingVm\TestShelfBuildingVm.csproj", "{97DCF53F-5A46-47F4-B1DA-01A7334167D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestShelfBuildingVm", "Tests\TestShelfBuildingVm\TestShelfBuildingVm.csproj", "{97DCF53F-5A46-47F4-B1DA-01A7334167D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventorApi", "InventorApi\InventorApi.csproj", "{7614242D-2E3E-4545-9CE5-F326A0B3A639}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -83,6 +85,10 @@ Global
 		{97DCF53F-5A46-47F4-B1DA-01A7334167D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{97DCF53F-5A46-47F4-B1DA-01A7334167D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{97DCF53F-5A46-47F4-B1DA-01A7334167D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7614242D-2E3E-4545-9CE5-F326A0B3A639}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7614242D-2E3E-4545-9CE5-F326A0B3A639}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7614242D-2E3E-4545-9CE5-F326A0B3A639}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7614242D-2E3E-4545-9CE5-F326A0B3A639}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

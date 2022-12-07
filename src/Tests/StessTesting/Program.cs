@@ -24,9 +24,11 @@ var process = Process.GetCurrentProcess();
 long peakPagedMem = 0,
     peakWorkingSet = 0,
     peakVirtualMem = 0,
-    countDetal = 0;
+    countDetal = 1;
+builder.BuildShelf(shelfParameters, apiService);
 // Start the process.
-using (Process myProcess = Process.GetCurrentProcess())
+//Process myProcess1 = Process.GetProcessesByName("kStudy").FirstOrDefault();
+using (Process myProcess = Process.GetProcessesByName("kStudy").FirstOrDefault())
 {
     // Display the process statistics until
     // the user closes the program.

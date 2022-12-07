@@ -46,6 +46,7 @@ namespace Buidler
         /// </summary>
         private void CreateBaseFigure()
         {
+            _apiService.CreateDocument();
 
             var points = new List<PointF>
             {
@@ -55,7 +56,6 @@ namespace Buidler
                     _shelfParameters.ShelfParameterCollection[ParameterType.Length].Value),
             };
 
-            _apiService.CreateDocument();
             var sketchXy = _apiService.CreateNewSketch(3);
 
             sketchXy.CreateTwoPointRectangle(points[0], points[1]);
