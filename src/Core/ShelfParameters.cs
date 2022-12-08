@@ -61,7 +61,7 @@ namespace Core
                     ParameterType.Length,
                     new()
                     {
-                        Name = "Длинна стеллажа L, мм:",
+                        Name = "Длинна стеллажа L:",
                         MinValue = 1000,
                         MaxValue = 2000,
                         Value = 1000,
@@ -72,7 +72,7 @@ namespace Core
                     ParameterType.Height,
                     new()
                     {
-                        Name = "Высота стеллажа H, мм:",
+                        Name = "Высота стеллажа H:",
                         MinValue = 1000,
                         MaxValue = 3000,
                         Value = 1000,
@@ -83,7 +83,7 @@ namespace Core
                     ParameterType.Width,
                     new()
                     {
-                        Name = "Ширина стеллажа W, мм:",
+                        Name = "Ширина стеллажа W:",
                         MinValue = 500,
                         MaxValue = 1000,
                         Value = 500,
@@ -95,7 +95,7 @@ namespace Core
                     ParameterType.WidthRack,
                     new()
                     {
-                        Name = "Ширина стойки w1, мм:",
+                        Name = "Ширина стойки w1:",
                         MinValue = 20,
                         MaxValue = 30,
                         Value = 20,
@@ -107,7 +107,7 @@ namespace Core
                     ParameterType.WidthShelf,
                     new()
                     {
-                        Name = "Ширина полки w2, мм:",
+                        Name = "Ширина полки w2:",
                         MinValue = 20,
                         MaxValue = 30,
                         Value = 20,
@@ -120,7 +120,7 @@ namespace Core
                 ParameterType.HeightShelf,
                 new()
                 {
-                    Name = "Расстояние между полками стеллажа h1, мм:",
+                    Name = "Расстояние между полками стеллажа h1:",
                     MinValue = ShelfParameterCollection[ParameterType.WidthShelf].Value,
                     MaxValue = ShelfParameterCollection[ParameterType.Height].Value,
                     Value = ShelfParameterCollection[ParameterType.WidthShelf].Value,
@@ -132,7 +132,7 @@ namespace Core
                 ParameterType.UpperIndent,
                 new()
                 {
-                    Name = "Расстояние верхнего отстпуа h2, мм:",
+                    Name = "Расстояние верхнего отстпуа h2:",
                     MinValue = 0,
                     MaxValue = ShelfParameterCollection[ParameterType.Height].Value - ShelfParameterCollection[ParameterType.HeightShelf].Value,
                     Value = 0,
@@ -144,7 +144,7 @@ namespace Core
                 ParameterType.LowerIndent,
                 new()
                 {
-                    Name = "Расстояние нижнего отстпуа  h3, мм:",
+                    Name = "Расстояние нижнего отстпуа  h3:",
                     MinValue = 0,
                     MaxValue = ShelfParameterCollection[ParameterType.Height].Value - ShelfParameterCollection[ParameterType.HeightShelf].Value,
                     Value = 0,

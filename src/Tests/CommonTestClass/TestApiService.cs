@@ -65,7 +65,7 @@ public class TestApiService : IApi
     }
     
     /// <inheritdoc/>
-    public void CutExtrude(ISketch sketch, double distance)
+    public void CutExtrude(ISketch sketch, double distance, bool isInvert)
     {
         IsCutExtrude = true;
     }

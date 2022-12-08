@@ -1,6 +1,7 @@
 using System.Collections.Immutable;
 using Buidler;
 using Core;
+using Moq;
 
 namespace TestBuilder;
 
@@ -13,7 +14,7 @@ public class TestShelfBuilder
     /// <summary>
     /// Возвращает новый экземпляр класса <see cref="TestApiService"/>.
     /// </summary>
-    private TestApiService TestApiService => new TestApiService();
+    private TestApiService TestApiService => new Mock<TestApiService>().Object;
 
     /// <summary>
     /// Возвращает новый экземпляр класса <see cref="ShelfParameters"/>.
@@ -23,7 +24,7 @@ public class TestShelfBuilder
     /// <summary>
     /// Возвращает новый объект класса <see cref="Buidler.ShelfBuilder"/>.
     /// </summary>
-    private ShelfBuilder ShelfBuilder => new ShelfBuilder();
+    private ShelfBuilder ShelfBuilder => new Mock<ShelfBuilder>().Object;
 
     [TestCase(TestName = "Тестирование построения корректного стеллажа.")]
     public void TestBuildShelf_DoesNotThrowException()
