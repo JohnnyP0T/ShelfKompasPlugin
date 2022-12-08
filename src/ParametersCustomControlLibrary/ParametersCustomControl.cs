@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -55,6 +56,22 @@ namespace ParametersCustomControlLibrary
                 typeof(ParametersCustomControl));
 
         /// <summary>
+        /// Единицы измерения.
+        /// </summary>
+        public string Units
+        {
+            get => (string)GetValue(UnitsProperty);
+            set => SetValue(UnitsProperty, value);
+        }
+
+        /// <summary>
+        /// Свойство Единицы измерения.
+        /// </summary>
+        public static readonly DependencyProperty UnitsProperty =
+            DependencyProperty.Register(nameof(Units), typeof(string),
+                typeof(ParametersCustomControl));
+
+        /// <summary>
         /// Команда для обновления параметров. Запускается при изменении параметров.
         /// </summary>
         public RelayCommand UpdateParametersCommand
@@ -91,6 +108,12 @@ namespace ParametersCustomControlLibrary
             DefaultStyleKeyProperty.OverrideMetadata(typeof(ParametersCustomControl),
                 new FrameworkPropertyMetadata(typeof(ParametersCustomControl)));
 
+        }
+
+        private void PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }

@@ -31,6 +31,12 @@ public class KompasWrapper : IApi
     /// </summary>
     private ksPart _part;
 
+    /// <inheritdoc/>
+    public override string ToString()
+    {
+        return "Компас 3D";
+    }
+
     public void CreateDocument()
     {
         if (_kompasObject == null)
@@ -123,7 +129,7 @@ public class KompasWrapper : IApi
     /// <param name="sketch">Эскиз.</param>
     /// <param name="distance">Дистанция выдавливания.</param>
     /// <exception cref="TypeAccessException"></exception>
-    public void CutExtrude(ISketch sketch, double distance)
+    public void CutExtrude(ISketch sketch, double distance, bool isReverse)
     {
         if (!(sketch is KompasSketch kompasSketch))
         {
@@ -134,10 +140,25 @@ public class KompasWrapper : IApi
         kompasSketch.EndEdit();
         ksEntity extrude = (ksEntity)_part.NewEntity((int)Obj3dType.o3d_cutExtrusion);
         ksCutExtrusionDefinition extrudeDefinition = (ksCutExtrusionDefinition)extrude.GetDefinition();
-        extrudeDefinition.directionType = (int)Direction_Type.dtNormal;
+        if (isReverse)
+        {
+            extrudeDefinition.directionType = (short)(int)Direction_Type.dtReverse;
+        }
+        else
+        {
+            extrudeDefinition.directionType = (short)(int)Direction_Type.dtNormal;
+        }
         extrudeDefinition.SetSketch(kompasSketch.Sketch);
         ksExtrusionParam extrudeParam = (ksExtrusionParam)extrudeDefinition.ExtrusionParam();
-        extrudeParam.depthNormal = distance;
+        if (isReverse)
+        {
+            extrudeParam.depthReverse = distance;
+        }
+        else
+        {
+            extrudeParam.depthNormal = distance;
+
+        }
         extrude.Create();
     }
 }

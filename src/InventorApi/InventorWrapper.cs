@@ -113,7 +113,7 @@ public class InventorWrapper : IApi
         Extrude(planarSketch.PlanarSketch, distance);
     }
 
-    public void CutExtrude(ISketch sketch, double distance)
+    public void CutExtrude(ISketch sketch, double distance, bool isReverse)
     {
         if (!(sketch is InventorSketch planarSketch))
         {
@@ -167,7 +167,7 @@ public class InventorWrapper : IApi
                 .CreateExtrudeDefinition(sketchProfile,
                     PartFeatureOperationEnum.kJoinOperation);
         extrudeDef.SetDistanceExtent(distance,
-            PartFeatureExtentDirectionEnum.kSymmetricExtentDirection);
+            PartFeatureExtentDirectionEnum.kPositiveExtentDirection);
         var extrude = PartDefinition.Features.ExtrudeFeatures.Add(extrudeDef);
         var objectCollection = CreateObjectCollection();
         objectCollection.Add(extrude);
@@ -187,7 +187,7 @@ public class InventorWrapper : IApi
                 .CreateExtrudeDefinition(sketchProfile,
                     PartFeatureOperationEnum.kCutOperation);
         extrudeDef.SetDistanceExtent(distance,
-            PartFeatureExtentDirectionEnum.kSymmetricExtentDirection);
+            PartFeatureExtentDirectionEnum.kPositiveExtentDirection);
         var extrude = PartDefinition.Features.ExtrudeFeatures.Add(extrudeDef);
         var objectCollection = CreateObjectCollection();
         objectCollection.Add(extrude);

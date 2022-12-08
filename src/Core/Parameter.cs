@@ -13,7 +13,7 @@ namespace Core
     public class Parameter : ObservableObject
     {
         #region -- Fields --
-        
+
         private double _value;
 
         private double _minValue;

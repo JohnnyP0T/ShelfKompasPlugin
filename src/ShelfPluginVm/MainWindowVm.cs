@@ -20,6 +20,8 @@ namespace ShelfPluginVm
     {
         #region -- Fields --
 
+        private string _units;
+
         private IApi _selectedApi;
 
         private ObservableCollection<IApi> _apiServices;
@@ -35,6 +37,19 @@ namespace ShelfPluginVm
         #endregion
 
         #region -- Properties --
+
+        /// <summary>
+        /// Идет ли процесс загрузки.
+        /// </summary>
+        public string Units
+        {
+            get => _units;
+            set
+            {
+                SetProperty(ref _units, value);
+                OnPropertyChanged(nameof(Units));
+            }
+        }
 
         /// <summary>
         /// Идет ли процесс загрузки.
@@ -84,6 +99,14 @@ namespace ShelfPluginVm
             set
             {
                 SetProperty(ref _selectedApi, value);
+                if (_selectedApi is KompasWrapper)
+                {
+                    Units = "mm";
+                }
+                else if (_selectedApi is InventorWrapper)
+                {
+                    Units = "cm";
+                }
                 OnPropertyChanged(nameof(SelectedApi));
             }
         }

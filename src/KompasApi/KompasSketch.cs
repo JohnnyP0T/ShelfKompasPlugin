@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using Kompas6API5;
@@ -31,6 +32,17 @@ namespace KompasApi
         /// </summary>
         public ksEntity Sketch { get; }
 
+        private bool _isInvertZx
+        {
+            get;
+            set;
+        }
+        private bool _isInvertZy
+        {
+            get;
+            set;
+        }
+
         /// <summary>
         /// Конструктор.
         /// </summary>
@@ -42,15 +54,20 @@ namespace KompasApi
             if (n == 1)
             {
                 plane = (ksEntity)part.GetDefaultEntity((int)Obj3dType.o3d_planeYOZ);
+                _isInvertZx = false;
+                _isInvertZy = true;
             }
             else if(n == 2)
             {
                 plane = (ksEntity)part.GetDefaultEntity((int)Obj3dType.o3d_planeXOZ);
-
+                _isInvertZx = true;
+                _isInvertZy = false;
             }
             else
             {
                 plane = (ksEntity)part.GetDefaultEntity((int)Obj3dType.o3d_planeXOY);
+                _isInvertZx = false;
+                _isInvertZy = false;
             }
             Sketch = (ksEntity)part.NewEntity((int)Obj3dType.o3d_sketch);
             _sketchDefinition = (ksSketchDefinition)Sketch.GetDefinition();
@@ -74,10 +91,30 @@ namespace KompasApi
         /// <param name="point2"></param>
         public void CreateTwoPointRectangle(PointF point1, PointF point2)
         {
-            _document2D.ksLineSeg(point1.X, -point1.Y, point2.X, -point1.Y, 1);
-            _document2D.ksLineSeg(point2.X, -point1.Y, point2.X, -point2.Y, 1);
-            _document2D.ksLineSeg(point1.X, -point2.Y, point2.X, -point2.Y, 1);
-            _document2D.ksLineSeg(point1.X, -point1.Y, point1.X, -point2.Y, 1);
+            if (_isInvertZx)
+            {
+                _document2D.ksLineSeg(-point1.X, -point1.Y, -point2.X, -point1.Y, 1);
+                _document2D.ksLineSeg(-point2.X, -point1.Y, -point2.X, -point2.Y, 1);
+                _document2D.ksLineSeg(-point1.X, -point2.Y, -point2.X, -point2.Y, 1);
+                _document2D.ksLineSeg(-point1.X, -point1.Y, -point1.X, -point2.Y, 1);
+            }
+            else if (_isInvertZy)
+            {
+                (point2.X, point2.Y) = (point2.Y, point2.X);
+                (point1.X, point1.Y) = (point1.Y, point1.X);
+
+                _document2D.ksLineSeg(-point1.X, -point1.Y, -point2.X, -point1.Y, 1);
+                _document2D.ksLineSeg(-point2.X, -point1.Y, -point2.X, -point2.Y, 1);
+                _document2D.ksLineSeg(-point1.X, -point2.Y, -point2.X, -point2.Y, 1);
+                _document2D.ksLineSeg(-point1.X, -point1.Y, -point1.X, -point2.Y, 1);
+            }
+            else
+            {
+                _document2D.ksLineSeg(point1.X, point1.Y, point2.X, point1.Y, 1);
+                _document2D.ksLineSeg(point2.X, point1.Y, point2.X, point2.Y, 1);
+                _document2D.ksLineSeg(point1.X, point2.Y, point2.X, point2.Y, 1);
+                _document2D.ksLineSeg(point1.X, point1.Y, point1.X, point2.Y, 1);
+            }
         }
     }
 }

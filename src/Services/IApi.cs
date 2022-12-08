@@ -45,6 +45,6 @@ namespace Services
         /// </summary>
         /// <param name="sketch">Эскиз.</param>
         /// <param name="distance">Расстояние выдавливания.</param>
-        void CutExtrude(ISketch sketch, double distance);
+        void CutExtrude(ISketch sketch, double distance, bool isReverse = false);
     }
 }
